@@ -1,0 +1,25 @@
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+[color]
+	ui = true
+[alias]
+	co = checkout
+	graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+	gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	st = status
+	cm = commit -m
+	# Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
+	stt = status -uno
+	# 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
+	difff = diff --word-diff
+	cancel = reset --soft HEAD^
+	br = branch
+	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+[user]
+	email = ota@idr.ias.sci.waseda.ac.jp
+	name = rokihi
+
+[core]
+	excludesfile = /home/ogata/.gitignore_global
+[push]
+	default = simple
