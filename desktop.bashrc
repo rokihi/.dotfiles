@@ -130,9 +130,9 @@ export RTM_ROOT=/usr/include/openrtm-1.1
 #export CMAKE_PREFIX_PATH=/opt/local/lib/cmake:/usr/local/lib/cmake:$CMAKE_PREFIX_PATH
 wasanbon-cd() {
   if [ ${#} -eq 0 ]; then
-    wasanbon-admin.py package list 
+    wasanbon-admin.py package list
   else
-    cd `wasanbon-admin.py package directory ${1}` 
+    cd `wasanbon-admin.py package directory ${1}`
   fi
 };
 
@@ -149,7 +149,7 @@ _wsb_svc_cmpl() {
         pprev="${COMP_WORDS[COMP_CWORD-1]}"
     fi
     subcmds=`wasanbon-admin.py -a`
-    #target=( $(compgen -W "${subcmds}" -- $1) )    
+    #target=( $(compgen -W "${subcmds}" -- $1) )
     for val in ${subcmds[@]}; do
 	if [[ ${val} == ${prev} ]]
 	then
@@ -184,7 +184,7 @@ _mgr_svc_cmpl() {
     fi
 
     subcmds=`./mgr.py -a`
-    #target=( $(compgen -W "${subcmds}" -- $1) )    
+    #target=( $(compgen -W "${subcmds}" -- $1) )
     for val in ${subcmds[@]}; do
 	if [[ ${val} == ${prev} ]]
 	then
@@ -215,11 +215,6 @@ complete -o nospace -F _mgr_svc_cmpl ./mgr.py
 complete -o nospace -F _wcd_svc_cmpl wasanbon-cd
 
 #-- Ending Setup Script of wasanbon --#
-
-
-. /home/ogata/torch/install/bin/torch-activate
-
-source /usr/local/lib/python2.7/dist-packages/rtshell/data/shell_support # enable rtcwd
 
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -254,10 +249,13 @@ alias loc='locate -i'
 alias findn="find ./ -name "
 alias findword="find ./ -type f -print | xargs grep "
 
+. /home/ogata/torch/install/bin/torch-activate
+
+source /usr/local/lib/python2.7/dist-packages/rtshell/data/shell_support # enable rtcwd
 #rtcwd localhost/
 #rtcwd fugendake.host_cxt/
 
-#conda with pyenv
+# anaconda with pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -266,13 +264,12 @@ alias activate="source /home/ogata/.pyenv/versions/anaconda3-4.3.1/bin/activate"
 alias py3="activate py3"
 alias deac="aource deactivate"
 
-
 # ROS
 source /opt/ros/kinetic/setup.bash
 source /home/ogata/catkin_ws/devel/setup.bash
 # Set ROS Network
 #export ROS_HOSTNAME=148.21.128.150
-#export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311 
+#export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
 # Set ROS alias command
 alias cw='cd ~/catkin_ws'
 alias cs='cd ~/catkin_ws/src'

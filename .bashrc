@@ -113,20 +113,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ROS
-source /opt/ros/kinetic/setup.bash
-source /home/ogata-lab/catkin_ws/devel/setup.bash
-# Set ROS Network
-#export ROS_HOSTNAME=148.21.128.150
-#export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311 
-# Set ROS alias command
-alias cw='cd ~/catkin_ws'
-alias cs='cd ~/catkin_ws/src'
-alias cm='cd ~/catkin_ws && catkin_make'
-
-export EDITOR= 'emacs'
-#
-
 HISTSIZE=10000
 HISTFILESIZE=10000
 HISTIGNORE="fg:bg:history:cd:ls:l:la"
@@ -140,21 +126,45 @@ bind '"\e[0B": history-search-forward'
 bind '";5C": forward-word'
 bind '";5D": backward-word'
 
+alias ..='cd ..'
 alias py=python
-alias ge=gedit
 alias ipy=ipython
+alias ge=gedit
+alias em=emacs
 alias ag='sudo apt-get'
+alias agup='ag update'
 alias op='xdg-open'
 alias opn='xdg-open .'
 alias lr='ls -CFR'
 alias rmrf='rm -rf'
 alias makehere='mkdir build; cd build; cmake ..; make'
 alias cmakehere='mkdir build; cd build; cmake ..'
+alias uloc='sudo updatedb; locate -i'
 alias loc='locate -i'
-alias findf="find ./ -name "
-alias em=emacs
-alias cdd='cd ..'
-alias ..='cd ..'
-alias agup='ag update'
+alias findn="find ./ -name "
+alias findword="find ./ -type f -print | xargs grep "
 
 #syndaemon -i 1 -d -t -k # unable touchpad while typing
+
+# ROS
+source /opt/ros/kinetic/setup.bash
+source /home/ogata-lab/catkin_ws/devel/setup.bash
+# Set ROS Network
+#export ROS_HOSTNAME=148.21.128.150
+#export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
+# Set ROS alias command
+alias cw='cd ~/catkin_ws'
+alias cs='cd ~/catkin_ws/src'
+alias cm='cd ~/catkin_ws && catkin_make'
+
+export EDITOR= 'atom'
+#
+
+# anaconda with pyenv
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+#export PATH="$PYENV_ROOT/versions/anaconda3-5.1.0/bin/:$PATH"
+alias act="source $PYENV_ROOT/versions/anaconda3-5.1.0/bin/activate"
+alias deact="source deactivate"
+alias py3="activate py3"
