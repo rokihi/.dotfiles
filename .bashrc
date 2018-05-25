@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+# HISTSIZE=1000
+# HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -122,7 +122,6 @@ bind '"\e[A": history-search-backward'
 bind '"\e[0A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\e[0B": history-search-forward'
-
 bind '";5C": forward-word'
 bind '";5D": backward-word'
 
@@ -130,7 +129,7 @@ alias ..='cd ..'
 alias py=python
 alias ipy=ipython
 alias ge=gedit
-alias em=emacs
+alias em='emacs -nw'
 alias ag='sudo apt-get'
 alias agup='ag update'
 alias op='xdg-open'
@@ -148,7 +147,7 @@ alias findword="find ./ -type f -print | xargs grep "
 
 # ROS
 source /opt/ros/kinetic/setup.bash
-source /home/ogata-lab/catkin_ws/devel/setup.bash
+source ~/catkin_ws/devel/setup.bash
 # Set ROS Network
 #export ROS_HOSTNAME=148.21.128.150
 #export ROS_MASTER_URI=http://${ROS_HOSTNAME}:11311
@@ -156,9 +155,7 @@ source /home/ogata-lab/catkin_ws/devel/setup.bash
 alias cw='cd ~/catkin_ws'
 alias cs='cd ~/catkin_ws/src'
 alias cm='cd ~/catkin_ws && catkin_make'
-
-export EDITOR= 'atom'
-#
+export EDITOR='atom'
 
 # anaconda with pyenv
 #export PYENV_ROOT="$HOME/.pyenv"

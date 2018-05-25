@@ -24,29 +24,24 @@
         ("org" . "http://orgmode.org/elpa/")))
 
 ;; ;; package自動インストール
-;; ;; proxy setting
-;; (setq url-proxy-service
-;;       '(("http" . "*****:8080")
-;;         ("https" . "****:8080")))
-;; ;; basic package list
-;; (defvar package-list '(multi-term
-;;                                   auto-complete
-;;                                   helm
-;;                                   helm-gtags))
 (package-initialize)
-;; ;; install basic package
-;; (require 'cl)
-;; (defun install-package (pacakage-list)
-;;   (let ((not-installed (loop for x in package-list
-;;                              when (not (package-installed-p x))
-;;                              collect x)))
-;;     (when not-installed
-;;       (package-refresh-contents)
-;;       (dolist (pkg not-installed)
-;;         (package-install pkg)))))
-;; ;; install package
-;; (install-package package-list)
-
+(require 'cl)
+(defvar installing-package-list
+  '(
+    ;; ここに使っているパッケージを書く。
+    undo-tree
+    auto-complete
+    python-mode
+    flymake-python-pyflakes
+    py-autopep8
+    ))
+(let ((not-installed (loop for x in installing-package-list
+                            when (not (package-installed-p x))
+                            collect x)))
+  (when not-installed
+    (package-refresh-contents)
+    (dolist (pkg not-installed)
+        (package-install pkg))))
 
 ;; color theme
 ;(load-theme 'monokai t)
@@ -246,14 +241,14 @@
 ;;
 ;; anything
 ;;
-(require 'anything-startup)
+;; (require 'anything-startup)
 
-(setq anything-c-filelist-file-name "~/.emacs.d/all.filelist")
-(setq anything-grep-candidates-fast-directory-regexp "^~/.emacs.d/")
+;; (setq anything-c-filelist-file-name "~/.emacs.d/all.filelist")
+;; (setq anything-grep-candidates-fast-directory-regexp "^~/.emacs.d/")
 
-;;anythingでファイルリストを検索
-(define-key global-map (kbd "C-:") 'anything-filelist+)
-;;クリップボードの履歴をanythingで検索
-(global-set-key "\M-y" 'anything-show-kill-ring)
-(global-set-key (kbd "C-.") 'anything-do-grep)
+;; ;;anythingでファイルリストを検索
+;; (define-key global-map (kbd "C-:") 'anything-filelist+)
+;; ;;クリップボードの履歴をanythingで検索
+;; (global-set-key "\M-y" 'anything-show-kill-ring)
+;; (global-set-key (kbd "C-.") 'anything-do-grep)
 
