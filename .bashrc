@@ -130,6 +130,7 @@ alias py=python
 alias ipy=ipython
 alias ge=gedit
 alias em='emacs -nw'
+alias a=atom
 alias ag='sudo apt-get'
 alias agup='ag update'
 alias op='xdg-open'
@@ -145,6 +146,19 @@ alias findword="find ./ -type f -print | xargs grep "
 
 #syndaemon -i 1 -d -t -k # unable touchpad while typing
 
+# Anaconda with pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# export PATH="$PYENV_ROOT/versions/anaconda3-5.1.0/bin/:$PATH"
+# alias act="source $PYENV_ROOT/versions/anaconda3-5.1.0/bin/activate"
+# alias deact="source deactivate"
+# alias py3="activate py3"
+
+# CUDA
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+
 # ROS
 source /opt/ros/kinetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
@@ -156,12 +170,6 @@ alias cw='cd ~/catkin_ws'
 alias cs='cd ~/catkin_ws/src'
 alias cm='cd ~/catkin_ws && catkin_make'
 export EDITOR='atom'
-
-# anaconda with pyenv
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
-#export PATH="$PYENV_ROOT/versions/anaconda3-5.1.0/bin/:$PATH"
-alias act="source $PYENV_ROOT/versions/anaconda3-5.1.0/bin/activate"
-alias deact="source deactivate"
-alias py3="activate py3"
+alias sou="source devel/setup.bash"
+source ~/mikata_arm_ws/devel/setup.bash
+source ~/ws_moveit/devel/setup.bash
